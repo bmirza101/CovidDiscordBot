@@ -1,12 +1,10 @@
 const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const https = require('https');
-
+const config = require('./config.json');
 
 const todayDate = new Date().toISOString().slice(0, 10);
-// let yesterdayDate = (new Date() - 1).toISOString().slice(0,10);
 
-// const path = 'reports/province/on?after=' + yesterdayDate;
 const path = '/reports/province/on?date=' + todayDate;
 
 const options = {
@@ -60,4 +58,4 @@ const sendMessageToChannel = async function(channelId, message) {
 
 }
 
-client.login('OTMxNzIzNzU4MDMxNDgyODkx.YeIlXg.19VDFDebJypznenbIdTDfsz0wdQ');
+client.login(config.token);
